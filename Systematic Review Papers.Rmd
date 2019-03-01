@@ -1,0 +1,53 @@
+---
+title: "Systematic Review"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(PRISMAstatement)
+library(ggplot2)
+```
+
+```{r}
+prisma(found = 375,
+       found_other = 0,
+       no_dupes = 375, 
+       screened = 375, 
+       screen_exclusions = 97, 
+       full_text = 278,
+       full_text_exclusions = 204, 
+       qualitative = 74, 
+       quantitative = 45,
+       width = 800, height = 800)
+```
+
+```{r}
+papers <- read.csv("PDFs after full text review (Included).csv")
+```
+
+```{r}
+qplot(x=Publication.Year, data = papers, geom = "auto")
+```
+
+
+```{r}
+str_count(papers$Title, pattern = "density")
+```
+```{r}
+str_count(papers$Title, pattern = "facilitation")
+```
+
+```{r}
+str_count(papers$Title, pattern = "shrub")
+```
+
+###Findings so far
+A significant number of papers have been filtered so far during the main text review. Most of them did not contain information on density of shrubs but briefly mentioned it in their introductions.
+
+Of the selected papers a significant amount do contain some sort of density data that could be useable for the systematic review.
+
+Almost all of the remaining papers connects facilitation with density in some form.
+
+Most of the papers that have passed the Full text screening have been published after or during the year of 2010.
